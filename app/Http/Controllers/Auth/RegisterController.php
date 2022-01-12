@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Rules\halfWidth;
+use Exception;
+use Weidner\Goutte\GoutteFacade as GoutteFacade;
 use Log;
+use PhpParser\Node\Stmt\TryCatch;
 
 class RegisterController extends Controller
 {
@@ -83,7 +86,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function regist(Request $request)
+    public function registUser(Request $request)
     {
         $req = $request->all();
         $validated = $this->validator($req);
@@ -95,11 +98,23 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($req)));
 
         return 1;
+    }
 
-        // $this->guard('api')->login($user);
-
-        // return $request->wantsJson()
-        //     ? new JsonResponse([], 201)
-        //     : redirect($this->redirectPath());
+    public function registURL(Request $request)
+    {
+        $url = $request->input('url');
+        try {
+            $goutte = GoutteFacade::request('GET', $url);
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            Log::info($message);
+            throw new Exception(1);
+        }
+        $goutte->filter('a')->each(function ($a) {
+            $file = 'C:\xampp\htdocs\butterflynet_api\temp\test.html';
+            $html = $a->html();
+            file_put_contents($file, $html, FILE_APPEND);
+            return 1;
+        });
     }
 }
