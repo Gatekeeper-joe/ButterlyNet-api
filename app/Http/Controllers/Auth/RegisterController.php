@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 use App\Rules\halfWidth;
 use Exception;
 use Weidner\Goutte\GoutteFacade as GoutteFacade;
@@ -38,7 +40,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::WORKSPACE;
 
     /**
      * Create a new controller instance.
@@ -100,21 +102,25 @@ class RegisterController extends Controller
         return 1;
     }
 
-    public function registURL(Request $request)
+    public function registURL(Request $request, Site $site)
     {
-        $url = $request->input('url');
+        $data = $request->all();
+        $url = $data['data']['url'];
+        $uid = $data['data']['uid'];
+
         try {
             $goutte = GoutteFacade::request('GET', $url);
         } catch (Exception $e) {
             $message = $e->getMessage();
             Log::info($message);
-            throw new Exception(1);
+            throw new Exception();
         }
-        $goutte->filter('a')->each(function ($a) {
-            $file = 'C:\xampp\htdocs\butterflynet_api\temp\test.html';
-            $html = $a->html();
-            file_put_contents($file, $html, FILE_APPEND);
-            return 1;
-        });
+
+        $host = parse_url($url, PHP_URL_HOST);
+        $data = $site->create(['user_id' => $uid, 'host' => $host, 'url' => $url]);
+
+        $access = app()->make('App\Http\Controllers\AccessController');
+        $access->execute($goutte, $data);
+        return;
     }
 }
