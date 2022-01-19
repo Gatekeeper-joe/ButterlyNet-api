@@ -17,11 +17,16 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Auth::routes();
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('/registURL', [RegisterController::class, 'registURL']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 Route::group(['middleware' => 'api'], function () {
     Route::post('/login', [AuthController::class, 'login']);
