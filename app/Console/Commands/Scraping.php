@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Console\Command;
 use App\Models\Site;
+use Goutte\Client;
+use Symfony\Component\HttpClient\HttpClient;
 use Weidner\Goutte\GoutteFacade as GoutteFacade;
 use Log;
 
@@ -49,7 +51,13 @@ class Scraping extends Command
                 $url = $obj->url;
 
                 try {
-                    $goutte = GoutteFacade::request('GET', $url);
+                    $client = new Client(HttpClient::create(array(
+                        'headers' => array(
+                            'Referer' => 'https://www.google.com/',
+                        ),
+                    )));
+                    $client->setServerParameter('HTTP_USER_AGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'); //Due to be forced using 'Symfony BrowserKit' in executing, set user-agent manually in this line.;
+                    $client = $client->request('GET', $url);
                 } catch (Exception $e) {
                     $message = $e->getMessage();
                     Log::info($message);
@@ -58,12 +66,13 @@ class Scraping extends Command
 
                 //Create a html file based on the scraped data.
                 $create = app()->make('App\Http\Controllers\CreateController');
-                $fnp = $create->execute($goutte, $obj, $path);
+                $fnp = $create->execute($client, $obj, $path);
 
                 //Relevant filepath is stored in an array.
                 $fnp = $path . '\\' . $fnp;
                 $full_path =  $fnp . '*';
                 $files = glob($full_path);
+                Log::info($files);
                 $arr_count = count($files);
 
                 if ($arr_count > 1) {
