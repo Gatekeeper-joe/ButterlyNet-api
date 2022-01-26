@@ -20,7 +20,7 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'refresh']]);
     }
 
-    public function login(Request $request)
+    public function login(Request $request, User $user)
     {
         $validator = Validator::make(
             $request->all(),
