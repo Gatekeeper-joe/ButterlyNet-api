@@ -116,11 +116,18 @@ class RegisterController extends Controller
             throw new Exception();
         }
 
+        $path = storage_path('app/source');
         $host = parse_url($url, PHP_URL_HOST);
-        $data = $site->create(['user_id' => $uid, 'host' => $host, 'url' => $url]);
 
-        $access = app()->make('App\Http\Controllers\AccessController');
-        $access->execute($goutte, $data);
+        $bool = $site->where('user_id', $uid)->where('url', $url)->exists();
+        if ($bool === true) {
+            return 0;
+        }
+
+        $obj = $site->create(['user_id' => $uid, 'host' => $host, 'url' => $url]);
+
+        $create = app()->make('App\Http\Controllers\CreateController');
+        $create->execute($goutte, $obj, $path);
         return;
     }
 }
