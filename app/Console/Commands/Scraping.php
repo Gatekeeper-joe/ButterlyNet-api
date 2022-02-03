@@ -17,7 +17,7 @@ class Scraping extends Command
      *
      * @var string
      */
-    protected $signature = 'command:scraping';
+    protected $signature = 'scraping';
 
     /**
      * The console command description.
