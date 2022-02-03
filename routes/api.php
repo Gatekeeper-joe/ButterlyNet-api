@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Controllers\GetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -31,4 +32,5 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/registURL', [RegisterController::class, 'registURL']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::post('/getUpdated', [GetController::class, 'getUpdated']);
 });
