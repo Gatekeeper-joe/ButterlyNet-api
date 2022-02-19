@@ -15,7 +15,12 @@ class Site extends Model
     public function saveNow($obj)
     {
         $now = date("Y-m-d H:i:s");
-        Site::where('user_id', $obj->user_id)->where('host', $obj->host)->update(['update_flag' => 1, 'last_updated_at' => $now]);
+
+        try {
+            $this->where('user_id', $obj->user_id)->where('host', $obj->host)->update(['update_flag' => 1, 'last_updated_at' => $now]);
+        } catch (\Throwable $th) {
+            return;
+        }
     }
 
     public function updateFlag($uid, $host)
