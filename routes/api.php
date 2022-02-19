@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -26,11 +27,14 @@ use App\Http\Controllers\Auth\RegisterController;
 Auth::routes();
 
 Route::group(['middleware' => 'api'], function () {
+    Route::get('/me', [AuthController::class, 'me']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::post('/registUser', [RegisterController::class, 'registUser']);
     Route::post('/registURL', [RegisterController::class, 'registURL']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/me', [AuthController::class, 'me']);
     Route::post('/getUpdated', [GetController::class, 'getUpdated']);
+    Route::post('/getRecord', [GetController::class, 'getRecord']);
+    Route::post('/updateFlag', [UpdateController::class, 'updateFlag']);
+    Route::post('/save', [UpdateController::class, 'save']);
 });
