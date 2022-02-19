@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Site;
+use App\Models\Handoff;
+use Carbon\Carbon;
 use Log;
 
 class GetController extends Controller
@@ -24,5 +26,13 @@ class GetController extends Controller
         }
 
         return $obj;
+    }
+
+    public function getRecord(Request $request, Handoff $handoff, Carbon $carbon)
+    {
+        $gid = $request->gid;
+        $records = $handoff->where('group_id', $gid)->get();
+        Log::info($records);
+        return $records;
     }
 }
