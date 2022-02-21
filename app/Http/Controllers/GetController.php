@@ -32,7 +32,6 @@ class GetController extends Controller
     {
         $gid = $request->gid;
         $records = $handoff->where('group_id', $gid)->get();
-        Log::info($records);
         return $records;
     }
 }
