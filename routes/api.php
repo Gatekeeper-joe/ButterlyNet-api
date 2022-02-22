@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -36,5 +37,6 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/getUpdated', [GetController::class, 'getUpdated']);
     Route::post('/getRecord', [GetController::class, 'getRecord']);
     Route::post('/updateFlag', [UpdateController::class, 'updateFlag']);
-    Route::post('/save', [UpdateController::class, 'save']);
+    Route::post('/create', [UpdateController::class, 'save']);
+    Route::post('/delete', [deleteController::class, 'execute']);
 });
