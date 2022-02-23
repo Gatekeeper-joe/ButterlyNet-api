@@ -38,5 +38,6 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/getRecord', [GetController::class, 'getRecord']);
     Route::post('/updateFlag', [UpdateController::class, 'updateFlag']);
     Route::post('/create', [UpdateController::class, 'save']);
+    Route::post('/update', [UpdateController::class, 'save']);
     Route::post('/delete', [deleteController::class, 'execute']);
 });
