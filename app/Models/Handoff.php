@@ -15,22 +15,25 @@ class Handoff extends Model
     //This is named saveData because of duplicating with Model::save().
     public function saveData($data)
     {
-        $key = array_keys($data);
-        if ($key[0] === 'newItem') {
-            $gid = $data['newItem']['group_id'];
-            $subject = $data['newItem']['subject'];
-            $body = $data['newItem']['body'];
-
-            $this->fill(['group_id' => $gid, 'subject' => $subject, 'body' => $body]);
+        Log::info($data);
+        $status = $data['editedItem']['status'];
+        if (empty($status)) {
+            $gid = $data['editedItem']['group_id'];
+            $subject = $data['editedItem']['subject'];
+            $body = $data['editedItem']['body'];
+            $status = 'open';
+            $this->fill(['group_id' => $gid, 'subject' => $subject, 'body' => $body, 'status' => $status]);
             $this->save();
 
             $record = $this->where('group_id', $gid)->get();
             return $record;
-        } elseif ($key[0] === 'obj') {
-            $gid = $data['obj']['gid'];
-            $id = $data['obj']['id'];
-            $subject = $data['obj']['subject'];
-            $status = $data['obj']['status'];
+        } else {
+            Log::info($data);
+            return;
+            $gid = $data['editedItem']['gid'];
+            $id = $data['editedItem']['id'];
+            $subject = $data['editedItem']['subject'];
+            $status = $data['editedItem']['status'];
 
             $this->where('id', $id)->update(['subject' => $subject, 'status' => $status]);
             $records = $this->where('group_id', $gid)->get();
@@ -47,8 +50,6 @@ class Handoff extends Model
     {
         Log::info($id);
         $this->destroy($id);
-        $records = $this->where('group_id', $gid)->get();
-
-        return $records;
+        return;
     }
 }
