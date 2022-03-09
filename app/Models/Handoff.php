@@ -15,27 +15,27 @@ class Handoff extends Model
     //This is named saveData because of duplicating with Model::save().
     public function saveData($data)
     {
-        Log::info($data);
         $status = $data['editedItem']['status'];
         if (empty($status)) {
             $gid = $data['editedItem']['group_id'];
             $subject = $data['editedItem']['subject'];
             $body = $data['editedItem']['body'];
-            $status = 'open';
+            $status = 'Open';
             $this->fill(['group_id' => $gid, 'subject' => $subject, 'body' => $body, 'status' => $status]);
             $this->save();
 
             $record = $this->where('group_id', $gid)->get();
             return $record;
         } else {
-            Log::info($data);
-            return;
-            $gid = $data['editedItem']['gid'];
+            $gid = $data['editedItem']['group_id'];
             $id = $data['editedItem']['id'];
             $subject = $data['editedItem']['subject'];
+            $body = $data['editedItem']['body'];
             $status = $data['editedItem']['status'];
 
-            $this->where('id', $id)->update(['subject' => $subject, 'status' => $status]);
+            Log::info($status);
+
+            $this->where('id', $id)->update(['subject' => $subject, 'body' => $body, 'status' => $status]);
             $records = $this->where('group_id', $gid)->get();
             return $records;
         }
