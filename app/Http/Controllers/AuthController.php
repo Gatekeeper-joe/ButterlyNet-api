@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Rules\halfWidth;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Hash;
-use Log;
 
 class AuthController extends Controller
 {
