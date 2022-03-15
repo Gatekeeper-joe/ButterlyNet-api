@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Rules\halfWidth;
 use Exception;
 use Weidner\Goutte\GoutteFacade as GoutteFacade;
-use Log;
 use PhpParser\Node\Stmt\TryCatch;
 
 class RegisterController extends Controller
@@ -67,7 +66,7 @@ class RegisterController extends Controller
                 'password' => ['required', new halfWidth, 'between:8,30', 'regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!#$%])/']
             ],
             [
-                'password.regex' => '下記の条件を全て満たしてください'
+                'password.regex' => 'All of the following conditions must be matched.'
             ]
         );
     }
@@ -112,7 +111,6 @@ class RegisterController extends Controller
             $goutte = GoutteFacade::request('GET', $url);
         } catch (Exception $e) {
             $message = $e->getMessage();
-            Log::info($message);
             throw new Exception();
         }
 
