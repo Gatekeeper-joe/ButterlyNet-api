@@ -24,18 +24,15 @@ class Handoff extends Model
             $this->fill(['group_id' => $gid, 'subject' => $subject, 'body' => $body, 'status' => $status]);
             $this->save();
 
-            $record = $this->where('group_id', $gid)->get();
-            return $record;
+            return;
         } else {
-            $gid = $data['editedItem']['group_id'];
             $id = $data['editedItem']['id'];
             $subject = $data['editedItem']['subject'];
             $body = $data['editedItem']['body'];
             $status = $data['editedItem']['status'];
 
             $this->where('id', $id)->update(['subject' => $subject, 'body' => $body, 'status' => $status]);
-            $records = $this->where('group_id', $gid)->get();
-            return $records;
+            return;
         }
     }
 
@@ -44,9 +41,8 @@ class Handoff extends Model
         return $this->where('group_id', $gid)->get();
     }
 
-    public function deleteRecord($gid, $id)
+    public function deleteRecord($id)
     {
-        Log::info($id);
         $this->destroy($id);
         return;
     }
