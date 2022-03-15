@@ -10,8 +10,7 @@ class deleteController extends Controller
 {
     public function execute(Request $request, Handoff $handoff)
     {
-        $gid = $request->deleteItem['group_id'];
         $id = $request->deleteItem['id'];
-        $handoff->deleteRecord($gid, $id);
+        $handoff->deleteRecord($id);
     }
 }
