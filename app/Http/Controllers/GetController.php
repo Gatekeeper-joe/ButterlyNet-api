@@ -28,10 +28,9 @@ class GetController extends Controller
         return $obj;
     }
 
-    public function getRecord(Request $request, Handoff $handoff, Carbon $carbon)
+    public function getRecord(Handoff $handoff)
     {
-        $gid = $request->gid;
-        $records = $handoff->where('group_id', $gid)->get();
+        $records = $handoff->all();
         return $records;
     }
 }
