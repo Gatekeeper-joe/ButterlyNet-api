@@ -34,7 +34,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::post('/registUser', [RegisterController::class, 'registUser']);
     Route::post('/registURL', [RegisterController::class, 'registURL']);
-    Route::post('/getUpdated', [GetController::class, 'getUpdated']);
+    Route::get('/getUpdated', [GetController::class, 'getUpdated']);
     Route::get('/getRecord', [GetController::class, 'getRecord']);
     Route::post('/updateFlag', [UpdateController::class, 'updateFlag']);
     Route::post('/create', [UpdateController::class, 'save']);
