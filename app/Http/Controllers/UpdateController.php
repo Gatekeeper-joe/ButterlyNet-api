@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Site;
 use App\Models\Handoff;
+use App\Models\Group;
+use App\Models\User;
 use Log;
 
 class UpdateController extends Controller
@@ -18,10 +20,26 @@ class UpdateController extends Controller
         $site->updateFlag($uid, $host);
     }
 
-    public function save(Request $request, Handoff $handoff)
+    public function save(Request $request, Handoff $handoff, User $user)
     {
         $data = $request->all();
         $record = $handoff->saveData($data);
         return $record;
+    }
+
+    public function createGroup(Request $request, Group $group, User $user)
+    {
+        $req = $request->all();
+        $gname = $req['groupInfo']['name'];
+        $pwd = $req['groupInfo']['password'];
+
+        $gid = $user->where('group_id', null)->exists();
+
+        if ($gid) {
+            return 0;
+        }
+
+        $group->create($gname, $pwd);
+        return;
     }
 }
