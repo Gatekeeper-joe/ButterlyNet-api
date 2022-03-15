@@ -33,8 +33,6 @@ class Handoff extends Model
             $body = $data['editedItem']['body'];
             $status = $data['editedItem']['status'];
 
-            Log::info($status);
-
             $this->where('id', $id)->update(['subject' => $subject, 'body' => $body, 'status' => $status]);
             $records = $this->where('group_id', $gid)->get();
             return $records;
