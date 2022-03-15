@@ -23,8 +23,8 @@ class UpdateController extends Controller
     public function save(Request $request, Handoff $handoff, User $user)
     {
         $data = $request->all();
-        $record = $handoff->saveData($data);
-        return $record;
+        $handoff->saveData($data);
+        return;
     }
 
     public function createGroup(Request $request, Group $group, User $user)
