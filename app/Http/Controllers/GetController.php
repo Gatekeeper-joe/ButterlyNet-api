@@ -11,10 +11,10 @@ use Log;
 
 class GetController extends Controller
 {
-    public function getUpdated(Request $request, Site $site)
+    public function getUpdated(Site $site)
     {
-        $uid = $request->uid;
-        $updated_page_data = $site->where('user_id', $uid)->where('update_flag', 1)->get(['host', 'url', 'last_updated_at']);
+        $updated_page_data = $site->where('update_flag', 1)->get(['host', 'url', 'last_updated_at']);
+        Log::info($updated_page_data);
         return $updated_page_data;
     }
 
