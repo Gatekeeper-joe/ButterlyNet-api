@@ -17,9 +17,9 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET', 'POST'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://butterly-*-gatekeeper.vercel.app/'],
 
     'allowed_origins_patterns' => [],
 
