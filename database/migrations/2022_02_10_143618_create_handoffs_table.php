@@ -18,6 +18,7 @@ class CreateHandoffsTable extends Migration
             $table->bigInteger('group_id');
             $table->string('subject');
             $table->string('body');
+            $table->string('status')->default('Open');
             $table->timestamps();
         });
     }
