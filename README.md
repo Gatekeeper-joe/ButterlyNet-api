@@ -1,26 +1,32 @@
 # 業務改善ツール「Butterfly.Net」
 
-![tumbnail](https://user-images.githubusercontent.com/53083803/161481561-9f765146-90ea-4a59-a8db-6fd1e99092ff.PNG
+![tumbnail](https://user-images.githubusercontent.com/53083803/161481561-9f765146-90ea-4a59-a8db-6fd1e99092ff.PNG)
 
-## About Laravel
+## 概要
+実際に制作者が携わっている業務に**非効率と感じられる点がいくつかあったため、その解消を目的として本アプリケーションを作成**しました。
+一部機能はそのまま採用いただくことは難しいですが、このアプリケーションにある発想を実際の現場で活用して頂けるよう提案することを検討しております。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 制作背景
+制作者は現在、SOC業務に従事しており24時間体制で監視を行っています。主な業務としましては顧客のサーバに対して発生したサイバー攻撃の成否の判定になりますが、それ以外にレポートの作成や脆弱性情報の収集、次のシフト勤務者に向けた引継ぎ等の業務があります。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+その中で**脆弱性情報の収集は**テキストファイルにまとめられている20～30のURLをブラウザに打ち込み**内容を精査するのに約20分**かかります。また、**引継ぎには**エクセルファイルを使用しておりますが、**ファイルが開き使えるようになるまでに遅いケースでは10分近くかかるという課題**を抱えています。この課題を解消できるツールを作成しようと思いついたことから本アプリケーションの制作にいたりました。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 操作説明
+URL：https://butterly-net.vercel.app/<br>
+サンプルユーザ：test<br>
+パスワード：aaAA11!!
 
-## Learning Laravel
+※初回はユーザ登録が必須となります。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### ●Webサイトの更新確認
+①メニューバーの「Regist URL」をクリック<br>
+②更新確認したいWebサイトのURLを入力し、「Submit」をクリック<br>
+③リクエストに成功するとポップアップが表示されます。<br>
+![giphy](https://user-images.githubusercontent.com/53083803/161560316-c906dbdb-a023-4799-8746-8e5051c8cc06.gif)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+④Webサイトの更新を「Butterfly.Net」が認識すると/workspaceの表にサイトのドメインと更新が確認された時刻が表示されます。
+
+
 
 ## Laravel Sponsors
 
