@@ -16,5 +16,6 @@ class GetController extends Controller
     public function getRecord(Handoff $handoff)
     {
         $records = $handoff->all();
+        return $records;
     }
 }
