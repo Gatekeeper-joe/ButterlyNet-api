@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 use App\Models\Site;
 use Goutte\Client;
 use Symfony\Component\HttpClient\HttpClient;
-use Weidner\Goutte\GoutteFacade as GoutteFacade;
 use Log;
 
 class Scraping extends Command
