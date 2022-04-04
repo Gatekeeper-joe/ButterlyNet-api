@@ -19,9 +19,9 @@ return [
 
     'allowed_methods' => ['GET', 'POST'],
 
-    'allowed_origins' => ['https://butterly-*-gatekeeper-joe.vercel.app/'],
+    'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [".*-gatekeeper-joe.vercel.app/"],
 
     'allowed_headers' => ['*'],
 
