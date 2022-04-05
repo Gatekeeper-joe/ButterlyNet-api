@@ -48,18 +48,16 @@ URL：https://butterly-net.vercel.app/<br>
 ![Workspace](https://gyazo.com/578d00e92cc5c40c21646303dfd5034f.gif)
 
 ## 使用技術
-バックエンド
+バックエンド<br>
 PHP 7.4.28 / Laravel 8.70.2
 
-フロントエンド
-HTML / CSS / javascript / Bootstrap.vue / Nuxt.js / Vuetify / chart.js
+フロントエンド<br>
+HTML / CSS / javascript / Bootstrap.vue / Nuxt.js / Vuetify / Chart.js
 
 インフラ<br>
-mysql 5.6.51<br>
-AWS(EC2)<br>
-xampp(開発環境)<br>
+mysql 5.6.51 / AWS(EC2) / XAMPP(開発環境)
 
-その他の使用技術
+その他の使用技術<br>
 git(gitHub) / Visual Studio Code / Teratail(SSHクライアント)
 lucidchart(ER図) / Drawio(AWS構成図)
 
