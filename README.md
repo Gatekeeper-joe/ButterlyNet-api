@@ -47,7 +47,21 @@ URL：https://butterly-net.vercel.app/<br>
 ②確認ダイアログが表示されるので、問題なければ「Delete」ボタンをクリック<br>
 ![Workspace](https://gyazo.com/578d00e92cc5c40c21646303dfd5034f.gif)
 
+## 使用技術
+バックエンド
+PHP 7.4.28 / Laravel 8.70.2
 
+フロントエンド
+HTML / CSS / javascript / Bootstrap.vue / Nuxt.js / Vuetify / chart.js
+
+インフラ<br>
+mysql 5.6.51<br>
+AWS(EC2)<br>
+xampp(開発環境)<br>
+
+その他の使用技術
+git(gitHub) / Visual Studio Code / Teratail(SSHクライアント)
+lucidchart(ER図) / Drawio(AWS構成図)
 
 ## Laravel Sponsors
 
