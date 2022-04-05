@@ -19,12 +19,33 @@ URL：https://butterly-net.vercel.app/<br>
 ※初回はユーザ登録が必須となります。
 
 ### ●Webサイトの更新確認
-①メニューバーの「Regist URL」をクリック<br>
-②更新確認したいWebサイトのURLを入力し、「Submit」をクリック<br>
+①ログイン後、メニューバーの「Regist URL」をクリック<br>
+②更新確認したいWebサイトのURLを入力し、「Submit」ボタンをクリック<br>
 ③リクエストに成功するとポップアップが表示されます。<br>
-![giphy](https://user-images.githubusercontent.com/53083803/161560316-c906dbdb-a023-4799-8746-8e5051c8cc06.gif)
+![registURL](https://user-images.githubusercontent.com/53083803/161680907-106c7963-a980-4be2-8ed3-6c0a877dd064.gif)
 
-④Webサイトの更新を「Butterfly.Net」が認識すると/workspaceの表にサイトのドメインと更新が確認された時刻が表示されます。
+
+④Webサイトの更新を「Butterfly.Net」が認識すると
+<a href="https://butterly-net.vercel.app/workspace">/workspace</a>
+の表に、更新が確認されたサイトのドメインと時刻が表示されます。
+![updated](https://user-images.githubusercontent.com/53083803/161662052-b829fe7a-2dda-413b-87bd-55da409ad7fb.PNG)
+
+### ●引継ぎの作成
+①「NEW」ボタンをクリック<br>
+②ダイアログが表示されるので、件名と本文を記載<br>
+③「create」ボタンをクリック<br>
+![Workspace](https://gyazo.com/b596e3951d768085f7c207ae3322209a.gif)
+
+### ●引継ぎの編集
+①ペンアイコンをクリック<br>
+②ダイアログが表示されるので、変更したい箇所を編集。<br>
+③「Update」ボタンをクリック<br>
+![Workspace](https://gyazo.com/ebb09092f23a64479b742c8994df88c6.gif)
+
+### ●引継ぎの削除
+①ゴミ箱アイコンをクリック<br>
+②確認ダイアログが表示されるので、問題なければ「Delete」ボタンをクリック<br>
+![Workspace](https://gyazo.com/578d00e92cc5c40c21646303dfd5034f.gif)
 
 
 
